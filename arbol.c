@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 
 	if ( (pid1=fork()) == 0 )
 	{ /* hijo */
-        printf("Hijo 1 (%d, hijo de %d :L:)\n",  getpid(), getppid());
+        
         if ( (pid5=fork()) == 0 )
         {
             /*nieto*/
@@ -25,6 +25,7 @@ int main(int argc, char *argv[])
             {
                 waitpid(pid5, &status5, 0);
                 waitpid(pid6, &status6, 0);
+                printf("Hijo 1 (%d, hijo de %d :L:)\n",  getpid(), getppid());
             }
         }
         	
@@ -36,7 +37,7 @@ int main(int argc, char *argv[])
  		if ( (pid2=fork()) == 0 )
  		{ 
             /* segundo hijo  */
- 			printf("Hijo 2 (%d, hijo de %d     :M:)\n",  getpid(), getppid());
+ 			
              if ( (pid7=fork()) == 0 )
              {
                  printf("nieto 3 (%d, hijo de %d     :A:)\n",  getpid(), getppid());
@@ -44,6 +45,7 @@ int main(int argc, char *argv[])
              else
              {
                  waitpid(pid7, &status7, 0);
+                 printf("Hijo 2 (%d, hijo de %d     :M:)\n",  getpid(), getppid());
              }
              waitpid(pid1, &status1, 0);
 		}
@@ -62,7 +64,7 @@ int main(int argc, char *argv[])
                 if ( (pid4=fork()) == 0 )
  		        { 
                     /* cuarto hijo  */
- 			        printf("Hijo 4 (%d, hijo de %d     :O:)\n",  getpid(), getppid());
+ 			       
                      if ( (pid8=fork()) == 0 )
                      {
                          printf("nieto 4 (%d, hijo de %d     :N:)\n",  getpid(), getppid());
@@ -77,15 +79,18 @@ int main(int argc, char *argv[])
                          {
                              waitpid(pid8, &status8, 0);
                              waitpid(pid9, &status9, 0);
+                              printf("Hijo 4 (%d, hijo de %d     :O:)\n",  getpid(), getppid());
                          }
                      }
-                     
+
+                  waitpid(pid2, &status2, 0);
+                    printf("papisss");
 		        }
             }
-            waitpid(pid2, &status2, 0);
+            
 			
  		}
-         printf("papisss");
+         
 
          
 	}
