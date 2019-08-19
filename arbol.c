@@ -21,10 +21,13 @@ int main(int argc, char *argv[])
             {
                 printf("nieto 2 (%d, hijo de %d :O:)\n",  getpid(), getppid());
             }
+            else
+            {
+                waitpid(pid5, &status5, 0);
+                waitpid(pid6, &status6, 0);
+            }
         }
-        waitpid(pid5, &status5, 0);
-        waitpid(pid6, &status6, 0);
-		
+        	
 
 	}
 	else
@@ -42,6 +45,7 @@ int main(int argc, char *argv[])
              {
                  waitpid(pid7, &status7, 0);
              }
+             waitpid(pid1, &status1, 0);
 		}
 		else
 		{ 
@@ -69,19 +73,22 @@ int main(int argc, char *argv[])
                          {
                              printf("nieto 5 (%d, hijo de %d     :D:)\n",  getpid(), getppid());
                          }
+                         else
+                         {
+                             waitpid(pid8, &status8, 0);
+                             waitpid(pid9, &status9, 0);
+                         }
                      }
-                     waitpid(pid8, &status8, 0);
-                     waitpid(pid9, &status9, 0);
+                     
 		        }
             }
-         
+            waitpid(pid2, &status2, 0);
 			
  		}
+         printf("papisss");
+
+         
 	}
-    waitpid(pid1, &status1, 0);
-    waitpid(pid2, &status2, 0);
-    waitpid(pid3, &status3, 0);
-    waitpid(pid4, &status4, 0);
-    printf("Padre (%d, hijo de %d)\n", getpid(), getppid());
+   
 	return 0;
 }
